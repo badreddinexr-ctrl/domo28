@@ -84,23 +84,26 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
   const whatsappUrl = `https://wa.me/212660245937?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 shadow-2xl transform transition-all duration-500 hover:scale-105 hover:shadow-cyan-500/20 border border-gray-700 group">
-      <div className="relative overflow-hidden rounded-xl mb-6">
+    <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 shadow-2xl transform transition-all duration-700 hover:scale-105 hover:shadow-cyan-500/30 border border-gray-700 group hover:border-cyan-500/50 hover:bg-gradient-to-br hover:from-gray-800 hover:to-gray-700">
+      <div className="relative overflow-hidden rounded-xl mb-6 bg-gradient-to-br from-gray-800 to-gray-900 p-4">
         <img 
           src={product.image} 
           alt={product.name}
-          className="w-full h-64 object-cover transition-transform duration-700 group-hover:scale-110"
+          className="w-full h-48 object-contain transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl"></div>
+        <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0">
+          NOUVEAU
+        </div>
       </div>
       
-      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors duration-300">
+      <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-all duration-300 group-hover:transform group-hover:translate-x-1">
         {product.name}
       </h3>
       
       <div className="flex flex-wrap gap-2 mb-6">
         {product.features.map((feature) => (
-          <div key={feature} className="flex items-center gap-1 bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full text-sm border border-cyan-500/20">
+          <div key={feature} className="flex items-center gap-1 bg-cyan-500/10 text-cyan-400 px-3 py-1 rounded-full text-sm border border-cyan-500/20 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-all duration-300 hover:scale-105">
             <FeatureIcon type={feature} />
             <span>{feature}</span>
           </div>
@@ -109,18 +112,18 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
       
       <div className="flex items-center justify-between">
         <div>
-          <span className="text-3xl font-bold text-orange-400">{product.price}</span>
+          <span className="text-3xl font-bold text-orange-400 group-hover:text-orange-300 transition-colors duration-300">{product.price}</span>
           <span className="text-white ml-1">DH</span>
-          <p className="text-gray-400 text-sm">Installation incluse + 1 an garantie</p>
+          <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors duration-300">Installation incluse + 1 an garantie</p>
         </div>
         
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-xl font-semibold transform transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-green-500/25 flex items-center gap-2"
+          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-white px-6 py-3 rounded-xl font-semibold transform transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-green-500/40 flex items-center gap-2 hover:rotate-1 active:scale-95"
         >
-          <Phone className="w-5 h-5" />
+          <Phone className="w-5 h-5 animate-pulse" />
           Acheter
         </a>
       </div>
@@ -132,26 +135,57 @@ function App() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-black via-gray-900 to-black">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/20 via-black to-orange-900/20"></div>
         
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse animation-delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse animation-delay-2000"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl animate-pulse animate-float"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl animate-pulse animation-delay-1000 animate-float-reverse"></div>
+          <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse animation-delay-2000 animate-float-slow"></div>
+          <div className="absolute top-10 right-1/4 w-32 h-32 bg-green-500/10 rounded-full blur-2xl animate-pulse animation-delay-3000 animate-float"></div>
+          <div className="absolute bottom-10 left-1/4 w-48 h-48 bg-yellow-500/10 rounded-full blur-2xl animate-pulse animation-delay-4000 animate-float-reverse"></div>
+        </div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-cyan-400/30 rounded-full animate-float-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`
+              }}
+            />
+          ))}
         </div>
         
         <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-          <div className="mb-8 transform transition-all duration-1000 animate-fade-in">
-            <div className="inline-block p-6 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl shadow-2xl mb-6">
-              <div className="text-4xl font-bold text-black">DOMO28</div>
+          <div className="mb-8 transform transition-all duration-1000 animate-fade-in animate-glow">
+            <div className="inline-block p-6 bg-gradient-to-r from-orange-500 to-yellow-500 rounded-2xl shadow-2xl mb-6 hover:shadow-orange-500/50 transition-all duration-500 hover:scale-105 animate-pulse-glow">
+              <div className="text-4xl font-bold text-black animate-text-shimmer">DOMO28</div>
             </div>
           </div>
           
-          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-orange-400 bg-clip-text text-transparent animate-fade-in animation-delay-500">
+          <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-cyan-400 via-blue-500 to-orange-400 bg-clip-text text-transparent animate-fade-in animation-delay-500 animate-gradient-x">
             SÉCURITÉ INTELLIGENTE
           </h1>
+              <h3 className="text-xl font-bold mb-3">WhatsApp Principal</h3>
+              <a 
+                href="https://wa.me/212669154235" 
+                className="text-green-400 hover:text-green-300 text-lg font-semibold transition-colors duration-300 block mb-2"
+              >
+                +212 669 154 235
+              </a>
+              <p className="text-sm text-gray-400">Serrures & Caméras</p>
+            </div>
+            
+            <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
+              <Phone className="w-12 h-12 text-blue-400 mx-auto mb-4" />
+              <h3 className="text-xl font-bold mb-3">WhatsApp Support</h3>
           
           <p className="text-xl md:text-2xl text-gray-300 mb-8 animate-fade-in animation-delay-1000">
             Serrures intelligentes de nouvelle génération à Casablanca
@@ -243,10 +277,11 @@ function App() {
               <h3 className="text-xl font-bold mb-3">WhatsApp</h3>
               <a 
                 href="https://wa.me/212660245937" 
-                className="text-green-400 hover:text-green-300 text-lg font-semibold transition-colors duration-300"
+                className="text-blue-400 hover:text-blue-300 text-lg font-semibold transition-colors duration-300 block mb-2"
               >
                 +212 660 245 937
               </a>
+              <p className="text-sm text-gray-400">Service Client</p>
             </div>
             
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-8 rounded-2xl border border-gray-700">
@@ -291,7 +326,7 @@ function App() {
             © 2025 DOMO28 - Sécurité Intelligente. Tous droits réservés.
           </p>
           <p className="text-sm text-gray-500">
-            Installation professionnelle • Garantie 1 an • Service après-vente
+            Installation professionnelle • Garantie 1-2 ans • Service après-vente
           </p>
         </div>
       </footer>
