@@ -95,6 +95,9 @@ const ProductCard = ({ product }: { product: typeof products[0] }) => {
         <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0">
           NOUVEAU
         </div>
+        <div className="absolute top-2 right-2 bg-orange-500 text-white px-2 py-1 rounded-full text-xs font-bold opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-x-2 group-hover:translate-x-0">
+          NOUVEAU
+        </div>
       </div>
       
       <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-all duration-300 group-hover:transform group-hover:translate-x-1">
@@ -145,6 +148,24 @@ function App() {
           <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl animate-pulse animation-delay-2000 animate-float-slow"></div>
           <div className="absolute top-10 right-1/4 w-32 h-32 bg-green-500/10 rounded-full blur-2xl animate-pulse animation-delay-3000 animate-float"></div>
           <div className="absolute bottom-10 left-1/4 w-48 h-48 bg-yellow-500/10 rounded-full blur-2xl animate-pulse animation-delay-4000 animate-float-reverse"></div>
+          <div className="absolute top-10 right-1/4 w-32 h-32 bg-green-500/10 rounded-full blur-2xl animate-pulse animation-delay-3000 animate-float"></div>
+          <div className="absolute bottom-10 left-1/4 w-48 h-48 bg-yellow-500/10 rounded-full blur-2xl animate-pulse animation-delay-4000 animate-float-reverse"></div>
+        </div>
+        
+        {/* Floating particles */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-cyan-400/30 rounded-full animate-float-particle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${3 + Math.random() * 4}s`
+              }}
+            />
+          ))}
         </div>
         
         {/* Floating particles */}
